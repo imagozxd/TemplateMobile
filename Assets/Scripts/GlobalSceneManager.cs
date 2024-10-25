@@ -14,7 +14,9 @@ public class GlobalSceneManager : MonoBehaviour
 
     public void LoadGameScene()
     {
-        LoadSceneAdditive("GameScene");
+        UnloadScene("Menu");
+
+        SceneManager.LoadScene("GameScene");
     }
 
     // Cargar una escena de manera aditiva (manteniendo la actual "Loader Scene")

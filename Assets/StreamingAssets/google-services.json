@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "367192565967",
+    "firebase_url": "https://platformgame-db148-default-rtdb.firebaseio.com",
+    "project_id": "platformgame-db148",
+    "storage_bucket": "platformgame-db148.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367192565967:android:2f3ce83d3cb8b4cd39efba",
+        "android_client_info": {
+          "package_name": "com.clase.PlatformGame9"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367192565967-2an5irt5a3g428dok18fangd92r5i92t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC3dWxMxCeFscym9n76m5SxtaDT130V68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367192565967-2an5irt5a3g428dok18fangd92r5i92t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
