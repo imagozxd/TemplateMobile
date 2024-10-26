@@ -7,9 +7,7 @@ public class GlobalSceneManager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
-
-        //aditiva inicial
-        LoadSceneAdditive("Menu");
+        StartCoroutine(LoadSceneAdditive("Menu"));
     }
 
     public void LoadGameScene()
@@ -18,24 +16,32 @@ public class GlobalSceneManager : MonoBehaviour
 
         SceneManager.LoadScene("GameScene");
     }
-
-    // Cargar una escena de manera aditiva (manteniendo la actual "Loader Scene")
-    public void LoadSceneAdditive(string sceneName)
+    public void LoadPuntajes()
     {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
-        Debug.Log("Se cargó con éxito la escena " + sceneName + " de manera aditiva");
+
+        StartCoroutine(LoadSceneAdditive("Puntajes"));
+    }
+    public void UnloadPuntajes()
+    {
+
+        UnloadScene("Puntajes");
     }
 
-    // Descargar una escena (que haya sido cargada de manera aditiva)
+    public IEnumerator LoadSceneAdditive(string sceneName)
+    {
+        if (!SceneManager.GetSceneByName(sceneName).isLoaded)
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            yield return new WaitUntil(() => asyncLoad.isDone);
+            Debug.Log("carga escena aditiva: " + sceneName);
+        }        
+    }
     public void UnloadScene(string sceneName)
     {
         if (SceneManager.GetSceneByName(sceneName).isLoaded)
         {
             SceneManager.UnloadSceneAsync(sceneName);
-        }
-        else
-        {
-            Debug.LogWarning("La escena " + sceneName + " no está cargada.");
-        }
+            Debug.Log("se descarga: " + sceneName);
+        }        
     }
 }

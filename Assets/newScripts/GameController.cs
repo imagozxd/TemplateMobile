@@ -60,5 +60,5 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-
+    
 }

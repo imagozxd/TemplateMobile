@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Menu : MonoBehaviour
             //globalSceneManager.LoadGameScene();
             globalSceneManager.UnloadScene("Menu");
             globalSceneManager.LoadSceneAdditive("GameScene");
-
+            //globalSceneManager.LoadGameScene();
         }
     }
 
@@ -33,6 +34,21 @@ public class Menu : MonoBehaviour
             DatabaseHandler.Instance.SetPlayerName(playerName);
             Debug.Log("ENTRO AQUI 1");
         }
-    }    
+    }
+    public void PuntajesBtn()
+    {
+        GlobalSceneManager globalSceneManager = FindObjectOfType<GlobalSceneManager>();
+
+        if (globalSceneManager != null)
+        {
+            globalSceneManager.LoadPuntajes();
+        }
+    }
+    public void SalirBtn()
+    {
+        Debug.Log("deberia cerrar");
+        Application.Quit();
+    }
+
 
 }
