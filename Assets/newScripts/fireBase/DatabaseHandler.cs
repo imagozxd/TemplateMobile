@@ -8,6 +8,8 @@ public class DatabaseHandler : MonoBehaviour
 {
     [SerializeField] private string userID;
     private DatabaseReference reference;
+    private GameController gameController;
+    private string playerName;
 
     [SerializeField] private User customUser;
 
@@ -21,10 +23,14 @@ public class DatabaseHandler : MonoBehaviour
     void Start()
     {
         reference = FirebaseDatabase.DefaultInstance.RootReference;
+        
 
         //Invoke(nameof(GetUserInfo), 1f);
     }
-
+    public void SetPlayerName(string name)
+    {
+        playerName = name;
+    }
     public void CreateUser()
     {
         User newUser = new User("Pedro", "Piedrito", 9781235);
@@ -32,12 +38,21 @@ public class DatabaseHandler : MonoBehaviour
 
         reference.Child("users").Child(userID).SetRawJsonValueAsync(json);
     }
-    public void CreateCustomUser()
+    public void CreateUserPlayer()
     {
-        string json = JsonUtility.ToJson(customUser);
+        UserPlayer newUserPlayer = new UserPlayer(playerName, gameController.GetHighScore()); 
+        string json = JsonUtility.ToJson(newUserPlayer);
 
-        reference.Child("users").Child(userID).SetRawJsonValueAsync(json);
+        reference.Child("Scores").Child(userID).SetRawJsonValueAsync(json);
+        Debug.Log("nombre: " + playerName + " y el score: " + gameController.GetHighScore());
     }
+
+    //public void CreateCustomUser()
+    //{
+    //    string json = JsonUtility.ToJson(customUser);
+
+    //    reference.Child("users").Child(userID).SetRawJsonValueAsync(json);
+    //}
 
     public IEnumerator GetFirstName(Action<string> onCallBack)
     {
@@ -124,5 +139,18 @@ public class User
         this.firstName = firstName;
         this.lastName = lastName;
         this.codeID = codeID;
+    }
+}
+
+[System.Serializable]
+public class UserPlayer
+{
+    public string namePlayer;    
+    public int scorePlayer;
+
+    public UserPlayer(string namePlayer, int scorePlayer)
+    {
+        this.namePlayer = namePlayer;        
+        this.scorePlayer = scorePlayer;
     }
 }

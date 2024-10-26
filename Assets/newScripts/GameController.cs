@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     
     [SerializeField] private int score = 0;
     private bool gameOver = false;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private DatabaseHandler databaseHandler;
+
+    private int highScore;
 
     void Start()
     {
@@ -19,14 +22,31 @@ public class GameManager : MonoBehaviour
         score += value;
         Debug.Log("Mostrar score/pisos: " + score);
     }
+    private void UpdateHighScore()
+    {
+        if (score > highScore)
+        {
+            highScore = score;
+            Debug.Log("Nuevo puntaje más alto: " + highScore);
+        }
+    }
 
     public void RestartGame()
     {
+        UpdateHighScore();
+
         Debug.Log("Reiniciando el juego");
         gameOver = false;
         score = 0;
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public int GetHighScore()
+    {
+        return highScore;
+    }
+
 
     private void GameOver()
     {

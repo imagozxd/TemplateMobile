@@ -3,16 +3,16 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     private PlatformSpawner spawner;
-    private GameManager gameManager;
+    private GameController gameController;
     private bool uniqueTouch = false;
 
     public void SetSpawner(PlatformSpawner spawner) //asignar al spawner.. 
     {
         this.spawner = spawner;
     }
-    public void SetGameManager(GameManager gameManager)
+    public void SetGameManager(GameController gameController)
     {
-        this.gameManager = gameManager;
+        this.gameController = gameController;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -20,7 +20,7 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !uniqueTouch)
         {
             uniqueTouch = true;
-            gameManager.AddScore(10); //cantidad score
+            gameController.AddScore(10); //cantidad score
             spawner.SpawnPlatforms(); 
         }
     }

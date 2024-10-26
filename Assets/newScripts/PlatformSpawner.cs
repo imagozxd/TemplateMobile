@@ -31,7 +31,7 @@ public class PlatformSpawner : MonoBehaviour
             if (platformScript != null)
             {
                 platformScript.SetSpawner(this);
-                platformScript.SetGameManager(FindObjectOfType<GameManager>());
+                platformScript.SetGameManager(FindObjectOfType<GameController>());
             }
         }
         //calcula la siguiete 

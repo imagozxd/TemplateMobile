@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("floor") && jumpCount == 0)
         {
-            OnGameOver?.Invoke();
+            //OnGameOver?.Invoke();
             OnRestart?.Invoke();
         }
     }

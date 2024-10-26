@@ -23,7 +23,7 @@ public class InputController : MonoBehaviour
             tapWorldPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             tapWorldPosition.z = 0;
             tapDetected = true;
-            Debug.Log("Tap en: " + tapWorldPosition);
+            //Debug.Log("Tap en: " + tapWorldPosition);
         }
         else
         {
