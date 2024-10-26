@@ -13,12 +13,11 @@ public class Menu : MonoBehaviour
     public void JugarBtn()
     {
         GetAttributeInformation();
-        GlobalSceneManager globalSceneManager = FindObjectOfType<GlobalSceneManager>();
-        if (globalSceneManager != null)
+        
+        if (GlobalSceneManager.Instance != null)
         {
             //globalSceneManager.LoadGameScene();
-            globalSceneManager.UnloadScene("Menu");
-            globalSceneManager.LoadSceneAdditive("GameScene");
+            GlobalSceneManager.Instance.LoadGameScene();
             //globalSceneManager.LoadGameScene();
         }
     }
@@ -36,14 +35,13 @@ public class Menu : MonoBehaviour
         }
     }
     public void PuntajesBtn()
+{
+    if (GlobalSceneManager.Instance != null)
     {
-        GlobalSceneManager globalSceneManager = FindObjectOfType<GlobalSceneManager>();
-
-        if (globalSceneManager != null)
-        {
-            globalSceneManager.LoadPuntajes();
-        }
+        GlobalSceneManager.Instance.LoadPuntajes();
     }
+}
+
     public void SalirBtn()
     {
         Debug.Log("deberia cerrar");

@@ -30,15 +30,9 @@ public class ScoresPanel : MonoBehaviour
 
     public void RegresarBtn()
     {
-
-        GlobalSceneManager globalSceneManager = FindObjectOfType<GlobalSceneManager>();
-        if (globalSceneManager != null)
+        if (GlobalSceneManager.Instance != null)
         {
-            //globalSceneManager.LoadGameScene();
-            globalSceneManager.UnloadPuntajes();
-
-
-
+            GlobalSceneManager.Instance.UnloadPuntajes();
         }
     }
 }

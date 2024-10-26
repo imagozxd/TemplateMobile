@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Reiniciando el juego");
         gameOver = false;
         score = 0;
-        
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
