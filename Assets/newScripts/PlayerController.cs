@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             //OnGameOver?.Invoke();
             OnRestart?.Invoke();
+            DatabaseHandler.Instance.CreateUserPlayer();
         }
     }
 

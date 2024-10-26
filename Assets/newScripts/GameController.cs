@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private int score = 0;
     private bool gameOver = false;
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private DatabaseHandler databaseHandler;
+    //[SerializeField] private DatabaseHandler databaseHandler;
 
     private int highScore;
 
@@ -28,6 +28,10 @@ public class GameController : MonoBehaviour
         {
             highScore = score;
             Debug.Log("Nuevo puntaje más alto: " + highScore);
+            if (DatabaseHandler.Instance != null)
+            {
+                DatabaseHandler.Instance.SetHighScore(highScore);
+            }
         }
     }
 
@@ -55,4 +59,6 @@ public class GameController : MonoBehaviour
 
         Time.timeScale = 0f;
     }
+
+
 }

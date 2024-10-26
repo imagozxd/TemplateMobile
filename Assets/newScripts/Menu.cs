@@ -28,12 +28,11 @@ public class Menu : MonoBehaviour
         //playerName = playerName.Remove(playerName.Length - 1);
         Debug.Log("nombre ingresado:"+playerName);
         //StartCoroutine(databaseHandler.GetCustomAttribute(playerName, UpdateCustomText));
-        DatabaseHandler databaseHandler = FindObjectOfType<DatabaseHandler>();
-        if (databaseHandler != null)
+        if (DatabaseHandler.Instance != null)
         {
-            databaseHandler.SetPlayerName(playerName);
-
+            DatabaseHandler.Instance.SetPlayerName(playerName);
+            Debug.Log("ENTRO AQUI 1");
         }
-    }
-    
+    }    
+
 }
