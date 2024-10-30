@@ -13,6 +13,7 @@ public class Authentication : MonoBehaviour
     //[SerializeField] private string password;
     [SerializeField] private TMP_InputField inputId;
     [SerializeField] private TMP_InputField inputPass;
+    [SerializeField] private AuthMenu authMenu;
 
     //[Header("Bool Actions")]
     //[SerializeField] private bool signUp = false;
@@ -72,6 +73,7 @@ public class Authentication : MonoBehaviour
         else
         {
             Debug.Log($"Succesfully registered user {registerTask.Result.User.Email}");
+            authMenu.EnterOnGameBtn();
         }
     }
 
@@ -89,12 +91,13 @@ public class Authentication : MonoBehaviour
         else
         {
             Debug.Log($"Login succeeded with {loginTask.Result.User.Email}");
-            OnLogInSuccesful?.Invoke();
+            //OnLogInSuccesful?.Invoke();
+            authMenu.EnterOnGameBtn();
         }
     }
 
-    //private void LogOut()
-    //{
-    //    FirebaseAuth.DefaultInstance.SignOut();
-    //}
+    public void LogOut()
+    {
+        FirebaseAuth.DefaultInstance.SignOut();
+    }
 }

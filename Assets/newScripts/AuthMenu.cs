@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class AuthMenu : MonoBehaviour
-{
+{ 
     public void EnterOnGameBtn()
     {
         Debug.Log("se logeo , ingresando");

@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Puntajes.unity
     guid: 0147c8e9d51d07d4e811834f6a14829a
+  - enabled: 0
+    path: Assets/Scenes/Storage.unity
+    guid: b3ac915292d8f1545bb80bf4b222c520
   m_configObjects: {}
