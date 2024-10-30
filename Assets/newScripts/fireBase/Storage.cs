@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Storage;
+using Firebase.Firestore; //creo que no lo implemento 
+
 
 public class Storage : MonoBehaviour
 {
@@ -30,9 +32,19 @@ public class Storage : MonoBehaviour
             StartCoroutine(DownloadPicture(path));
         }
 
-
     }
-
+    private void Update()
+    {
+        
+    }
+    public void UploadBtn()
+    {
+        StartCoroutine(UploadPicture(texture));
+    }
+    public void DownloadBtn()
+    {
+        StartCoroutine(DownloadPicture(path));
+    }
     private IEnumerator UploadPicture(Texture2D picture)
     {
         //https://learn.microsoft.com/en-us/dotnet/api/system.guid?view=net-8.0
